@@ -1,4 +1,18 @@
 .body {
-  border: 1px solid red;
+  border: 1px solid black;
   min-height: 500px;
+}
+
+.body .list, .detail {
+  padding: 15px;
+}
+
+.body .list::after {
+  content: '';
+  height: 100%;
+  width: 1px;
+  position: absolute;
+  right: 0;
+  background: black;
+  top: 0px;
 }

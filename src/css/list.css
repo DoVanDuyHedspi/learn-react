@@ -1,0 +1,11 @@
+.list table tr td button {
+  display: none;
+}
+
+.list table tr td.enable button {
+  display: block!important;
+}
+
+.list table tr {
+  line-height: 30px;
+}

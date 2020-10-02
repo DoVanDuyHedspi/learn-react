@@ -5,8 +5,8 @@ import './App.css';
 
 function App() {
   return (
-    <div className='container'>
-      <Header />
+    <div className='app container'>
+      <Header startTime={new Date()} />
       <Body />
     </div>
   );

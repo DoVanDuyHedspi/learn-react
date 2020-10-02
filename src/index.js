@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
+import $ from "jquery";
+import "bootstrap/dist/js/bootstrap.min.js";
+global.jQuery = require('jquery');
+require('bootstrap');
 
 ReactDOM.render(
   <React.StrictMode>

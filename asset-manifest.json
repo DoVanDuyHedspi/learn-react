@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/learn-react/static/css/main.e6e72a6e.chunk.css",
-    "main.js": "/learn-react/static/js/main.f50cd9d7.chunk.js",
-    "main.js.map": "/learn-react/static/js/main.f50cd9d7.chunk.js.map",
+    "main.js": "/learn-react/static/js/main.54a4dc39.chunk.js",
+    "main.js.map": "/learn-react/static/js/main.54a4dc39.chunk.js.map",
     "runtime-main.js": "/learn-react/static/js/runtime-main.a82f666d.js",
     "runtime-main.js.map": "/learn-react/static/js/runtime-main.a82f666d.js.map",
     "static/css/2.8aa5a7f8.chunk.css": "/learn-react/static/css/2.8aa5a7f8.chunk.css",
-    "static/js/2.d269baca.chunk.js": "/learn-react/static/js/2.d269baca.chunk.js",
-    "static/js/2.d269baca.chunk.js.map": "/learn-react/static/js/2.d269baca.chunk.js.map",
+    "static/js/2.b073f700.chunk.js": "/learn-react/static/js/2.b073f700.chunk.js",
+    "static/js/2.b073f700.chunk.js.map": "/learn-react/static/js/2.b073f700.chunk.js.map",
     "index.html": "/learn-react/index.html",
-    "precache-manifest.4ecc498df86c9cf7c5709aad49d99f1d.js": "/learn-react/precache-manifest.4ecc498df86c9cf7c5709aad49d99f1d.js",
+    "precache-manifest.c2e2522166a655f85db51e81b8cbfd0a.js": "/learn-react/precache-manifest.c2e2522166a655f85db51e81b8cbfd0a.js",
     "service-worker.js": "/learn-react/service-worker.js",
     "static/css/2.8aa5a7f8.chunk.css.map": "/learn-react/static/css/2.8aa5a7f8.chunk.css.map",
     "static/css/main.e6e72a6e.chunk.css.map": "/learn-react/static/css/main.e6e72a6e.chunk.css.map",
-    "static/js/2.d269baca.chunk.js.LICENSE.txt": "/learn-react/static/js/2.d269baca.chunk.js.LICENSE.txt"
+    "static/js/2.b073f700.chunk.js.LICENSE.txt": "/learn-react/static/js/2.b073f700.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a82f666d.js",
     "static/css/2.8aa5a7f8.chunk.css",
-    "static/js/2.d269baca.chunk.js",
+    "static/js/2.b073f700.chunk.js",
     "static/css/main.e6e72a6e.chunk.css",
-    "static/js/main.f50cd9d7.chunk.js"
+    "static/js/main.54a4dc39.chunk.js"
   ]
 }

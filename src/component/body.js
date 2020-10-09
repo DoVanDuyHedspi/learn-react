@@ -15,6 +15,12 @@ class Body extends React.Component {
       { 'name': 'dung1', 'email': 'dung1@gmail.com' },
       { 'name': 'duy2', 'email': 'duy2@gmail.com' },
       { 'name': 'dung2', 'email': 'dung2@gmail.com' },
+      { 'name': 'duy3', 'email': 'duy3@gmail.com' },
+      { 'name': 'dung3', 'email': 'dung3@gmail.com' },
+      { 'name': 'duy4', 'email': 'duy4@gmail.com' },
+      { 'name': 'dung4', 'email': 'dung4@gmail.com' },
+      { 'name': 'duy5', 'email': 'duy5@gmail.com' },
+      { 'name': 'dung5', 'email': 'dung5@gmail.com' },
     ];
     if(!localStorage.getItem('list')) {
       localStorage.setItem('list', JSON.stringify(listDefault));
@@ -30,6 +36,7 @@ class Body extends React.Component {
   }
 
   handleEdit(index) {
+    console.log(index);
     this.setState({
       editStatus: true,
       editUser: this.state.list[index],
@@ -50,6 +57,7 @@ class Body extends React.Component {
   }
 
   async handleUpdate(user) {
+    console.log(user);
     let list = [...this.state.list];
     const index = this.state.editIndex;
     list[index] = user;
@@ -64,7 +72,6 @@ class Body extends React.Component {
   }
 
   async handleDelete(index) {
-    console.log(index);
     let list = [...this.state.list];
     list.splice(index, 1);
     await this.setState({
@@ -75,6 +82,21 @@ class Body extends React.Component {
   }
 
   render() {
+    let detail;
+    if(this.state.editStatus) {
+      detail = (
+        <div className="col-md detail">
+          <Detail
+            editStatus={this.state.editStatus}
+            user={this.state.editUser}
+            handleCancel={() => this.handleCancel()}
+            handleUpdate={(user) => this.handleUpdate(user)}
+          />
+        </div>
+      )
+    } else {
+      detail = "";
+    }
     return (
       <div className="body row m-0">
         <div className="col-md list">
@@ -85,14 +107,8 @@ class Body extends React.Component {
             handleDelete={(index) => this.handleDelete(index)}
           />
         </div>
-        <div className="col-md detail">
-          <Detail
-            editStatus={this.state.editStatus}
-            user={this.state.editUser}
-            handleCancel={() => this.handleCancel()}
-            handleUpdate={(user) => this.handleUpdate(user)}
-          />
-        </div>
+        {detail}
+        
       </div>
     );
   }

@@ -100,6 +100,13 @@ class Body extends React.Component {
     return (
       <div className="body row m-0">
         <div className="col-md list">
+          <button 
+            type="button" 
+            className="btn btn-primary float-right m-3"
+            onClick={() => this.setState({editStatus: true})}
+          >
+            Thêm mới
+          </button>
           <List
             list={this.state.list}
             handleEdit={(index) => this.handleEdit(index)}

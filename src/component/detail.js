@@ -54,53 +54,6 @@ class Detail extends React.Component {
                 aria-describedby="emailHelp"
               />
           </FormWrapper>
-          {/* <form>
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                className={`form-control ${this.state.errorMessage.name ? 'is-invalid' : ''}`}
-                id="name"
-                name="name"
-                value={this.state.name}
-                onChange={(e) => this.handleChange(e)}
-              />
-              <div className="invalid-feedback">
-                {this.state.errorMessage.name}
-              </div>
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                className={`form-control ${this.state.errorMessage.email ? 'is-invalid' : ''}`}
-                id="email"
-                name="email"
-                aria-describedby="emailHelp"
-                value={this.state.email}
-                onChange={(e) => this.handleChange(e)}
-              />
-              <div className="invalid-feedback">
-                {this.state.errorMessage.email}
-              </div>
-            </div>
-
-            <div className="float-right">
-              <input
-                type="button"
-                className="btn btn-secondary mr-5"
-                onClick={() => this.props.handleCancel()}
-                value="Cancel"
-              />
-              <input
-                type="button"
-                className="btn btn-primary"
-                onClick={() => this.handleSubmit()}
-                value="Save"
-                disabled={!this.state.enableSubmit}
-              />
-            </div>
-          </form> */}
         </div>
       </div>
     )

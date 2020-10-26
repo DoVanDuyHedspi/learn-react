@@ -117,7 +117,33 @@ class List extends React.Component {
             </tbody>
           </table>
         </div>
-        <Pagination items={this.props.list} onChangePage={(pageIndex, totalPages) => this.onChangePage(pageIndex, totalPages)} />
+        <Pagination items={this.props.list} onChangePage={(pageIndex, totalPages) => this.onChangePage(pageIndex, totalPages)}>
+          {
+            ({pager, setPage}) => (
+              <nav aria-label="Page navigation example">
+                <ul className="pagination justify-content-center">
+                  <li className={`page-item  ${pager.currentPage === 1 ? 'disabled' : ''}`}>
+                    <a className="page-link" onClick={() => setPage(1)}>First</a>
+                  </li>
+                  <li className={`page-item  ${pager.currentPage === 1 ? 'disabled' : ''}`}>
+                    <a className="page-link" onClick={() => setPage(pager.currentPage - 1)}>Previous</a>
+                  </li>
+                  {pager.pages.map((page, index) =>
+                    <li key={index} className={`page-item ${pager.currentPage === page ? 'active' : ''}`}>
+                      <a className="page-link" onClick={() => setPage(page)}>{page}</a>
+                    </li>
+                  )}
+                  <li className={`page-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
+                    <a className="page-link" onClick={() => setPage(pager.currentPage + 1)}>Next</a>
+                  </li>
+                  <li className={`page-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
+                    <a className="page-link" onClick={() => setPage(pager.totalPages)}>Last</a>
+                  </li>
+                </ul>
+              </nav>
+            )
+          }
+        </Pagination>
       </div>
     );  
   }

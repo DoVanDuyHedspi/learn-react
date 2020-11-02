@@ -1,26 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../css/detail.css';
 
-class FormWrapper extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: {
-        name: props.user.name,
-        email: props.user.email,
-      },
-      errorMessage: {
-        name: '',
-        email: '',
-      },
-      enableSubmit: true,
-    }
-  }
+function FormWrapper(props) {
+  const [user, setUser] = useState({
+    name: props.user.name,
+    email: props.user.email,
+  });
+  const [errorMessage, setErrorMessage] = useState({
+    name: '',
+    email: '',
+  });
+  const [enableSubmit, setEnableSubmit] = useState(true);
 
-  validateSubmit = (type) => {
-    const { user } = this.state; 
+  const validateSubmit = () => {
+    console.log(user);
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    let message = this.state.errorMessage;
+    let message = errorMessage;
     message.name = '';
     message.email = '';
 
@@ -32,65 +27,63 @@ class FormWrapper extends React.Component {
     } else if (!re.test(user.email)) {
       message.email = message.email + 'Hay nhap dung dinh dang email' + '\r\n'
     }
-    this.setState({
-      errorMessage: message,
-    })
+    
+    setErrorMessage(message);
+    console.log(errorMessage);
 
     if (message.name || message.email) {
-      return false;
+      setEnableSubmit(false);
     }
-    return true;
+    setEnableSubmit(true);
   }
 
-  handleChange = async (e) => {
+  const handleChange = async (e) => {
     const inputName = e.target.name;
-    const user = this.state.user;
-    user[inputName] = e.target.value;
-    await this.setState({ user, });
-    if(!this.validateSubmit()) {
-      this.setState({
-        enableSubmit: false,
-      })
-    }
+    const value = e.target.value;
+    await setUser(prevUser => ({
+      ...prevUser,
+      [inputName]: value
+    }));
   }
 
-  render() {
-    const Input = (child, index) => (
-      <div className="form-group" key={index}>
-        <label htmlFor={child.props.id}>{child.props.name}</label>
-        <child.type 
-          {...child.props}
-          className={`form-control ${this.state.errorMessage[child.props.name] ? 'is-invalid' : ''}`}
-          value={this.state.user[child.props.name]}
-          onChange={(e) => this.handleChange(e)}
-        />
-        <div className="invalid-feedback">
-          {this.state.errorMessage[child.props.name]}
-        </div>
+  useEffect(() => {validateSubmit()}, [user])
+
+  const Input = (child, index) => (
+    <div className="form-group" key={index}>
+      <label htmlFor={child.props.id}>{child.props.name}</label>
+      <child.type 
+        {...child.props}
+        className={`form-control ${errorMessage[child.props.name] ? 'is-invalid' : ''}`}
+        value={user[child.props.name]}
+        onChange={(e) => handleChange(e)}
+      />
+      <div className="invalid-feedback">
+        {errorMessage[child.props.name]}
       </div>
-    )
-    return (
-      <form>
-        {this.props.children.map(Input)}
+    </div>
+  )
+  return (
+    <form>
+      {props.children.map(Input)}
 
-        <div className="float-right">
-          <input
-            type="button"
-            className="btn btn-secondary mr-5"
-            onClick={() => this.props.handleCancel()}
-            value="Cancel"
-          />
-          <input
-            type="button"
-            className="btn btn-primary"
-            onClick={() => this.props.handleSubmit(this.state.user)}
-            value="Save"
-            disabled={!this.state.enableSubmit}
-          />
-        </div>
-      </form>
-    )
-  }
+      <div className="float-right">
+        <input
+          type="button"
+          className="btn btn-secondary mr-5"
+          onClick={() => props.handleCancel()}
+          value="Cancel"
+        />
+        <input
+          type="button"
+          className="btn btn-primary"
+          onClick={() => props.handleSubmit(user)}
+          value="Save"
+          disabled={!enableSubmit}
+        />
+      </div>
+    </form>
+  )
+
 }
 
 export default FormWrapper;
